@@ -28,6 +28,7 @@ public class MemberService {
 
     }
 
+    @Transactional
     public void joinV2(String username) {
         Member member = new Member(username);
         Log logMessage = new Log(username);
@@ -38,7 +39,6 @@ public class MemberService {
 
         log.info("== logRepository 호출 시작 ==");
         try {
-
             logRepository.save(logMessage);
         } catch (RuntimeException e) {
             log.info("log 저장에 실패했습니다. logMessage={}", logMessage.getMessage());
